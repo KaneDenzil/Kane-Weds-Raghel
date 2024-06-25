@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// UnderConstruction.tsx
+import React from "react";
+import backGroundVideo from "./assets/underConstructionBackground.mp4";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// TypeScript interface for style objects
+interface Style {
+  [key: string]: React.CSSProperties;
 }
 
-export default App
+// Styles
+const styles: Style = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100vh",
+    fontFamily: '"Arial", sans-serif',
+  },
+  videoContainer: {},
+  emoji: {
+    fontSize: "48px",
+    margin: "20px 0",
+  },
+  message: {
+    fontSize: "24px",
+    textAlign: "center",
+    maxWidth: "80%",
+  },
+};
+
+const UnderConstruction: React.FC = () => {
+  return (
+    <div style={styles.container}>
+      <div style={styles.videoContainer}>
+        <video autoPlay loop muted id="video">
+          <source src={backGroundVideo} type="video/mp4" />
+        </video>
+      </div>
+      <div>
+        <div style={styles.emoji}>🚧</div>
+        <h1>Under Construction</h1>
+        <p style={styles.message}>
+          We're currently working on creating something fantastic. We'll be here
+          soon!
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default UnderConstruction;
